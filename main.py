@@ -7,7 +7,7 @@ import cairosvg
 import os
 
 app = FastAPI(title="Nutrition Label Renderer", version="2.0.0")
-API_KEY = os.environ.get("API_KEY", "CHANGE_ME")
+API_KEY = os.environ.get("API_KEY", "836dfe05b30aaac2fac14a73f3539560")
 
 class Nutrients(BaseModel):
     calories: float
