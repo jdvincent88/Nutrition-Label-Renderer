@@ -84,8 +84,9 @@ def root():
         "status": "ok",
         "message": "POST JSON to /render/nutrition with Authorization: Bearer <API_KEY>.",
         "example_keys": [
-            "SERVING_SIZE", "SERVINGS_PER_CONTAINER",
-            "nutrients": "CALORIES, TOTAL_FAT_AMT, TOTAL_FAT_DV, ..."
+            "SERVING_SIZE",
+            "SERVINGS_PER_CONTAINER",
+            "Nutrients section includes keys like CALORIES, TOTAL_FAT_AMT, TOTAL_FAT_DV, etc."
         ]
     }
 
