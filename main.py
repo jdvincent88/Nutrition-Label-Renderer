@@ -13,35 +13,35 @@ API_KEY = os.environ.get("API_KEY")
 # Models
 # ---------------------------------------------------------------------------
 class Nutrients(BaseModel):
-    CALORIES: float
-    TOTAL_FAT_AMT: str
-    TOTAL_FAT_DV: str
-    SAT_FAT_AMT: str
-    SAT_FAT_DV: str
-    TRANS_FAT_AMT: str
-    TRANS_FAT_DV: str
-    CHOLESTEROL_AMT: str
-    CHOLESTEROL_DV: str
-    SODIUM_AMT: str
-    SODIUM_DV: str
-    CARBS_AMT: str
-    CARBS_DV: str
-    FIBER_AMT: str
-    FIBER_DV: str
-    SUGARS_AMT: str
-    SUGARS_DV: str
-    ADD_SUG_AMT: str
-    ADD_SUG_DV: str
-    PROTEIN_AMT: str
-    PROTEIN_DV: str
-    VITD_AMT: str
-    VITD_DV: str
-    CALCIUM_AMT: str
-    CALCIUM_DV: str
-    IRON_AMT: str
-    IRON_DV: str
-    POTASSIUM_AMT: str
-    POTASSIUM_DV: str
+    CALORIES: float = 0
+    TOTAL_FAT_AMT: str = "0g"
+    TOTAL_FAT_DV: str = "0%"
+    SAT_FAT_AMT: str = "0g"
+    SAT_FAT_DV: str = "0%"
+    TRANS_FAT_AMT: str = "0g"
+    TRANS_FAT_DV: str = "0%"
+    CHOLESTEROL_AMT: str = "0mg"
+    CHOLESTEROL_DV: str = "0%"
+    SODIUM_AMT: str = "0mg"
+    SODIUM_DV: str = "0%"
+    CARBS_AMT: str = "0g"
+    CARBS_DV: str = "0%"
+    FIBER_AMT: str = "0g"
+    FIBER_DV: str = "0%"
+    SUGARS_AMT: str = "0g"
+    SUGARS_DV: str = "0%"
+    ADD_SUG_AMT: str = "0g"
+    ADD_SUG_DV: str = "0%"
+    PROTEIN_AMT: str = "0g"
+    PROTEIN_DV: str = "0%"
+    VITD_AMT: str = "0mcg"
+    VITD_DV: str = "0%"
+    CALCIUM_AMT: str = "0mg"
+    CALCIUM_DV: str = "0%"
+    IRON_AMT: str = "0mg"
+    IRON_DV: str = "0%"
+    POTASSIUM_AMT: str = "0mg"
+    POTASSIUM_DV: str = "0%"
     VITC_AMT: Optional[str] = ""
     VITC_DV: Optional[str] = ""
     VITB6_AMT: Optional[str] = ""
@@ -71,7 +71,7 @@ def fill_template(svg_template: str, payload: LabelData) -> str:
     svg_filled = svg_filled.replace("{{SERVINGS_PER_CONTAINER}}", payload.SERVINGS_PER_CONTAINER)
 
     # Replace all nutrient placeholders
-    for key, value in payload.nutrients.dict().items():
+    for key, value in payload.nutrients.model_dump().items():
         svg_filled = re.sub(rf"{{{{{key}}}}}", str(value), svg_filled)
     return svg_filled
 
